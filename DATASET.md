@@ -12,4 +12,4 @@ Use the official [VisDrone dataset release](https://github.com/VisDrone/VisDrone
 
 `prepare_v2.py` excludes four train IDs and two val IDs because of duplicate/conflicting samples, giving train6467 and val546. The excluded IDs are recorded directly in `prepare_v2.py`; it regenerates split manifests with per-image and annotation hashes. The detector and codec evaluations described in this project used val546 after this lock. Keep test-dev out of model or K selection.
 
-These archives are large binary data. They must be committed via Git LFS, never as ordinary Git objects. Their presence and actual LFS payloads should be verified after checkout with `git lfs pull` and SHA-256 checks against this table. A pointer file alone is not the dataset.
+The dataset archives are deliberately not uploaded to this source archive. Obtain the original files from the official VisDrone release and verify each SHA-256 against this table before use.
