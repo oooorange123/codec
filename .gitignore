@@ -10,3 +10,4 @@ build/
 runs/
 experiments/
 outputs/
+data/
