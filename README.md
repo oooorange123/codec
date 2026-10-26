@@ -15,9 +15,9 @@ The archive deliberately excludes performance-loss investigations, ablation trai
 
 ## Data and weights
 
-See [DATASET.md](DATASET.md) for the three original VisDrone2019-DET archives, SHA-256 hashes, split counts, and the exact train/validation exclusions. The intended dataset archive paths are `data/VisDrone2019-DET-{train,val,test-dev}.zip` via Git LFS; check whether those three files are present in the repository before assuming the data has been copied. Extract them below a common data root before running the code.
+See [DATASET.md](DATASET.md) for the three original VisDrone2019-DET archives, SHA-256 hashes, split counts, and the exact train/validation exclusions. The dataset archives are not included in this repository. Download the three official archives, verify the SHA-256 hashes in `DATASET.md`, and extract them below a common data root before running the code.
 
-The trained detector and codec checkpoints and the 458 MB COCO pretrained detector checkpoint are **not** part of this source/data archive. Exact published AP numbers require the corresponding checkpoints. `prepare_v2.py` pins the detector checkpoint SHA-256 and regenerates machine-local manifests with image and annotation hashes.
+The trained detector and codec checkpoints and the 458 MB COCO pretrained detector checkpoint are **not** part of this source archive. Exact published AP numbers require the corresponding checkpoints. `prepare_v2.py` pins the detector checkpoint SHA-256 and regenerates machine-local manifests with image and annotation hashes.
 
 ## Environment and entry points
 
