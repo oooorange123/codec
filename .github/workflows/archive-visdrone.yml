@@ -1,0 +1,37 @@
+name: Archive VisDrone DET dataset
+on:
+  push:
+    paths:
+      - .github/workflows/archive-visdrone.yml
+permissions:
+  contents: write
+concurrency:
+  group: archive-visdrone-dataset
+  cancel-in-progress: false
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download original archives
+        run: |
+          python -m pip install --user gdown
+          mkdir -p data
+          python -m gdown 1a2oHjcEcwXP8oUF95qiwrqzACb2YlUhn -O data/VisDrone2019-DET-train.zip
+          python -m gdown 1bxK5zgLn0_L8x276eKkuYA_FzwCIjb59 -O data/VisDrone2019-DET-val.zip
+          python -m gdown 1PFdW_VFSCfZ_sTSZAGjQdifF_Xd5mf0V -O data/VisDrone2019-DET-test-dev.zip
+      - name: Verify source archives
+        run: |
+          printf '%s\n' \
+            '86a77eba93137bfc16e4993860de9245b0675c0dba0d3ab98fb458699e256f84  data/VisDrone2019-DET-train.zip' \
+            'abeea063037e5d20398837deb11084e652402a34ddf4f207bdf541a6f2a35ef9  data/VisDrone2019-DET-val.zip' \
+            'b28a94b06dfd9e36ce77ff8155fb82b9d2c030f198a76105933bd56c6ea6a68d  data/VisDrone2019-DET-test-dev.zip' | sha256sum -c -
+      - name: Upload verified data through Git LFS
+        run: |
+          git lfs install --local
+          git add .gitattributes data/VisDrone2019-DET-*.zip
+          git -c user.name='codec archive' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Archive verified VisDrone DET dataset via Git LFS'
+          git push origin HEAD:main
