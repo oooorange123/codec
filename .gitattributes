@@ -1,1 +1,0 @@
-data/VisDrone2019-DET-*.zip filter=lfs diff=lfs merge=lfs -text
