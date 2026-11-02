@@ -1,0 +1,57 @@
+{
+  "stage": "B-final-matched-probe",
+  "arm": "latent",
+  "seed": 101,
+  "epochs": 30,
+  "grid": [
+    128,
+    256
+  ],
+  "reference_K": 524288,
+  "latent_shape": [
+    128,
+    256,
+    16
+  ],
+  "actual_transmission": false,
+  "N_symbol": 0,
+  "noise": false,
+  "source_checkpoint": "/home/wbywby/2-rlwireless/semantictest/visdrone_semantic_v2/experiments/grid_k_budget_20261021/high_k_sweep_20261023/run_v2/epoch_24/codec.pt",
+  "source_sha256": "140abdfd34af625090b3fea5671c63af195c1bf5fdbbdc50eabaa88787224604",
+  "detector": "/home/wbywby/2-rlwireless/semantictest/visdrone_semantic_v2/runs/det_seed42/best.pt",
+  "detector_sha256": "3f85d3f8a70bcebf673f59b6eabdb5407da3e560fba34aeb01385a6b0aae4bc5",
+  "manifest_sha256": {
+    "train": "840670f4b4f4b5f32117844978ad1213b3bee899f136fbe611116b5c48c512e0",
+    "val": "3af48a18c687df3ebd41973731ded6f3eac1e2e43ccb965d3dc4bbb5fd7351c3"
+  },
+  "train_images": 6467,
+  "val_images": 546,
+  "batch_size": 2,
+  "amp": false,
+  "optimizer": "AdamW",
+  "lr": 0.0002,
+  "weight_decay": 0.0001,
+  "lr_schedule": "constant",
+  "loss": "detector + 10*valid-region relative feature MSE",
+  "selection": "maximum val546 AP, first epoch on tie",
+  "trainable_modules": [
+    "probe",
+    "adapter"
+  ],
+  "probe_architecture": "per-level 256->128->256 convolutions, no skip",
+  "latent_fixed_input_map": "[B,128,256,16] bilinear to each level then learned 16->256 adapter",
+  "code_sha256": {
+    "run_latent_probe.py": "d54fe0a5bd6d06fb4556ff34da62007d7f680f0699001f6535b6496ab51a9f4f",
+    "run_frozen_decoder.py": "7f799096471fc27d433bd052a5b2ad68caddd2597db3612f6d5d4d9f15642cb3",
+    "run_latent_direct.py": "ec1bc4a935b7227c3d945da10b28afbb729e9369fcfaf6e47ca16e7e64e4974b",
+    "run_pg.py": "6dfe4721c733c6d6f09ef5fbbb1e40c6b9beeda093fd25ecc24624d649042643",
+    "run_high_k.py": "d9d1c41ebfe098a0991f9b8637f3e83bc6d8929d71933fe0c4a287c865885145",
+    "variable_grid_codec.py": "e35958ed325e46ddd476156ddadda0aeb3fa749e8f7a3f3f990e14f9f8555419",
+    "run_server.py": "e7cd20c9f9dc820db58d7c49f99750fadbdef1174784e423d766246edd6123dd",
+    "eval_official.m": "317598ee7554224982a94098f69b4dc0fe5bd833b1d757d0778a24baa9fa36c0",
+    "eval_size_supplemental.m": "3176a259684208f79b0cbeb46ad865368c123155700776cb80f962ceb037a7c5",
+    "run_matched_probe.py": "16b58ccab4e690abc6a80d8f889a8c66a3ef747c2796db7f610b7759732043e3"
+  },
+  "train_AP": "official evaluator on exact locked train6467 with deterministic val transform",
+  "evaluation_code": "undefined zero-wire complex_power recorded as null"
+}

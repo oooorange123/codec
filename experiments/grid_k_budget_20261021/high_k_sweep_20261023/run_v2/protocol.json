@@ -1,0 +1,46 @@
+{
+  "stage": "B-directed-high-K",
+  "seed": 101,
+  "epochs": 30,
+  "grid": [
+    128,
+    256
+  ],
+  "K_complex": [
+    131072,
+    262144,
+    524288
+  ],
+  "q_per_grid_cell": {
+    "131072": 4,
+    "262144": 8,
+    "524288": 16
+  },
+  "training": "every batch covers all K; mean of three losses; one optimizer step",
+  "train_images": 6467,
+  "val_images": 546,
+  "batch_size": 2,
+  "optimizer": "AdamW",
+  "lr": 0.0002,
+  "weight_decay": 0.0001,
+  "lr_schedule": "constant",
+  "amp": false,
+  "loss": "detector + 10*valid-region relative feature MSE",
+  "noise": false,
+  "SNR_dB_metadata_only": 10,
+  "mean_complex_symbol_power": 1,
+  "detector_sha256": "3f85d3f8a70bcebf673f59b6eabdb5407da3e560fba34aeb01385a6b0aae4bc5",
+  "warmstart_sha256": "6b74d443714c5741f25c3263731c6809caae5c51c4d19f27e5f0f1f8170eaebb",
+  "manifest_sha256": {
+    "train": "840670f4b4f4b5f32117844978ad1213b3bee899f136fbe611116b5c48c512e0",
+    "val": "3af48a18c687df3ebd41973731ded6f3eac1e2e43ccb965d3dc4bbb5fd7351c3"
+  },
+  "code_sha256": {
+    "run_high_k.py": "d9d1c41ebfe098a0991f9b8637f3e83bc6d8929d71933fe0c4a287c865885145",
+    "run_server.py": "e7cd20c9f9dc820db58d7c49f99750fadbdef1174784e423d766246edd6123dd",
+    "variable_grid_codec.py": "e35958ed325e46ddd476156ddadda0aeb3fa749e8f7a3f3f990e14f9f8555419",
+    "modeling.py": "dc132c2fe445c188e2025c1ead7f373def2cfb8eceba6000190a76f6a49c82db",
+    "visdrone_data.py": "53e04c63cd81aaaf48e4c96409cdc1d6cff9d6a4ca1e5968199ed3dbb93aa869",
+    "run_v2_stage_b.py": "f54f4abd46a7a0a20d7f6d70db804677bddc3b19ed39422a85fd7e462f2cc8fc"
+  }
+}
