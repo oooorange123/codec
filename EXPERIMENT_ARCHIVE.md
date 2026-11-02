@@ -2,6 +2,8 @@
 
 These files preserve the **server versions used for the recorded runs**. Their relative paths are unchanged because the scripts import one another through sibling experiment directories. Checkpoints, data, manifests, logs, and predictions are not included; the hard-coded server paths and hash guards must be satisfied before re-running elsewhere.
 
+The recorded evaluator command points to [`runtime/octave_eval.sh`](runtime/octave_eval.sh), also archived. It invokes the original server's `/opt/anaconda3` `visdrone-eval` environment; a new host must supply an equivalent Octave installation.
+
 | Run | Main source (SHA-256) | Locked protocol and command |
 | --- | --- | --- |
 | Matched raw/latent probe | [`run_matched_probe.py`](experiments/grid_k_budget_20261021/matched_probe_20261030/run_matched_probe.py) `16b58ccab4e690abc6a80d8f889a8c66a3ef747c2796db7f610b7759732043e3` | [`raw`](experiments/grid_k_budget_20261021/matched_probe_20261030/run/raw/protocol.json) and [`latent`](experiments/grid_k_budget_20261021/matched_probe_20261030/run/latent/protocol.json) protocols; each has a sibling `train_command.txt` |
